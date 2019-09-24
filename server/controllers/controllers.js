@@ -9,7 +9,7 @@ var fs = require('fs');
 //superadmin adding user uses this code to generate super user for the first time
 exports.postSuperadmin = function(req, res) {
     var newUser = model.SuperAdmin({
-        username: 'himalayanodysseys',
+        username: 'drinknepal',
         password: 'admin'
     });
     newUser.save(function(err, response) {

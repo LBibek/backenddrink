@@ -174,7 +174,7 @@
                   console.log(response.data);
 
                   if (response.data.status == 'admin_login') {
-                      window.location = '/dashboard/locations';
+                      window.location = '/dashboard/product';
                   } else {
                       $scope.resp = response.data;
                       $timeout(function() {
