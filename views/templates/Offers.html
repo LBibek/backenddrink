@@ -1,12 +1,12 @@
 <h1>Offers</h1>
-<!-- backend addding hotels -->
 
-<button class="btn btn-info btn-md" href="" data-toggle="modal" data-target="#addHotel"><span class="fa fa-plus"></span>
+
+<button class="btn btn-info btn-md" href="" data-toggle="modal" data-target="#addOffer"><span class="fa fa-plus"></span>
    Add Offers
     </button>
-<div ng-controller="hotelController">
+<div ng-controller="offerController">
     <div>
-        <div class="modal" id="addHotel">
+        <div class="modal" id="addOffer">
             <div class="modal-dialog">
                 <div class="modal-content">
                     <!-- Modal Header -->
@@ -18,7 +18,7 @@
                     <div class="modal-body">
                         <form enctype="multipart/form-data">
                             <div class="adding-section">
-                                <input type="text" required class="form-control" placeholder="Name of Offer" ng-model="hotels.hotel_name"><br>
+                                <input type="text" required class="form-control" placeholder="Name of Offer" ng-model="offer.offer_name"><br>
                                 <br>
 
 
@@ -37,7 +37,7 @@
                     </div>
                     <!-- Modal footer -->
                     <div class="modal-footer">
-                        <button class="btn btn-outline-success" ng-click="saveHotel('','hotel',lat, lng)" data-dismiss="modal">Save Offer</button>
+                        <button class="btn btn-outline-success" ng-click="saveOffer('','offer')" data-dismiss="modal">Save Offer</button>
                         <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
                     </div>
                 </div>
@@ -49,7 +49,7 @@
         <label for="" ng-if="successMessage" class="alert alert-success" style="width: 80%;
     position: fixed;
     top: 65px;">{{successMessage}}</label>
-        <h2>All Offers <span class="" style="float: right">{{hotelData.length}}</span></h2>
+        <h2>All Offers <span class="" style="float: right">{{offerData.length}}</span></h2>
         <table class="table table-bordered">
             <thead>
                 <tr>
@@ -62,13 +62,13 @@
                 </tr>
             </thead>
             <tbody>
-                <tr ng-repeat="dat in hotelData">
-                    <td>{{dat.hotel_name}}</td>
+                <tr ng-repeat="dat in offerData">
+                    <td>{{dat.offer_name}}</td>
                     <td>{{dat.price}}</td>
 
                     <td>{{dat.bookingStatus}}</td>
 
-                    <td><button class="fa fa-trash btn btn-danger" ng-click="removeHotel(dat._id)">
+                    <td><button class="fa fa-trash btn btn-danger" ng-click="removeOffer(dat._id)">
                     </button>
                         <button class="fa fa-pencil btn btn-info"></button>
                     </td>

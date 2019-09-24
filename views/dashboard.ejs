@@ -13,7 +13,7 @@
     <link rel="mask-icon" href="/images/safari-pinned-tab.svg" color="#5bbad5">
     <meta name="msapplication-TileColor" content="#da532c">
     <meta name="theme-color" content="#ffffff">
-    <title>Himalayan Odysseys | Dashboard </title>
+    <title>Drink Nepal | Dashboard </title>
     <link rel="shortcut icon" href="/images/favicon.png" type="image/x-icon">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
@@ -38,12 +38,12 @@
                 </div>
                 <div class="col-xs-12 col-sm-12 col-md-9 col-lg-9 col-xl-10 top-right-panel">
 
-                    <div class=" col-md-6 col-lg-6 col-xl-6 hamberger-menu float-left" id="hamb-menu">
+                    <!-- <div class=" col-md-6 col-lg-6 col-xl-6 hamberger-menu float-left" id="hamb-menu">
                         <div class="search-bars">
                             <input type="text" placeholder="Search anything">
                             <button class="btn btn-outline-success fa fa-search"></button>
                         </div>
-                    </div>
+                    </div> -->
                     <div class=" col-md-10 col-lg-10 col-xl-10 icongroup">
                         <ul class="nav" style="    width: 69%;
     float: right;
@@ -176,33 +176,33 @@
                         <div class="bread col-md-6 col-lg-8 col-xl-8">
                         </div>
                     </div>
-                    <%if(pid=='home'){%>
+                    <!-- <%if(pid=='home'){%>
                         <% include templates/dashboard.html%>
-                            <%}%>
-                                <%if(pid=='locations'){%>
+                            <%}%> -->
+                    <!-- <%if(pid=='locations'){%>
                                     <% include templates/locations.html%>
+                                        <%}%> -->
+                    <!-- <%if(pid=='feedbacks'){%>
+                                    <% include templates/feedback.html%>
+                                        <%}%> -->
+                    <%if(pid=='users'){%>
+                        <% include templates/users.html%>
+                            <%}%>
+                                <%if(pid=='offers'){%>
+                                    <% include templates/offers.html%>
                                         <%}%>
-                                            <%if(pid=='feedbacks'){%>
-                                                <% include templates/feedback.html%>
+                                            <!-- <%if(pid=='hotels'){%>
+                                                            <% include templates/hotels.html%>
+                                                                <%}%> -->
+                                            <!-- <%if(pid=='activities'){%>
+                                                            <% include templates/activities.html%>
+                                                                <%}%> -->
+                                            <%if(pid=='product'){%>
+                                                <% include templates/product.html%>
                                                     <%}%>
-                                                        <%if(pid=='users'){%>
-                                                            <% include templates/users.html%>
+                                                        <%if(pid=='setting'){%>
+                                                            <% include templates/settings.html%>
                                                                 <%}%>
-                                                                    <%if(pid=='offers'){%>
-                                                                        <% include templates/offers.html%>
-                                                                            <%}%>
-                                                                                <%if(pid=='hotels'){%>
-                                                                                    <% include templates/hotels.html%>
-                                                                                        <%}%>
-                                                                                            <%if(pid=='activities'){%>
-                                                                                                <% include templates/activities.html%>
-                                                                                                    <%}%>
-                                                                                                        <%if(pid=='product'){%>
-                                                                                                            <% include templates/product.html%>
-                                                                                                                <%}%>
-                                                                                                                    <%if(pid=='setting'){%>
-                                                                                                                        <% include templates/settings.html%>
-                                                                                                                            <%}%>
                 </div>
             </div>
         </div>

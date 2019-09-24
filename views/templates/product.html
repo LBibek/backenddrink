@@ -4,7 +4,7 @@
    Add Product
  </button>
 
-<div ng-controller="hotelController">
+<div ng-controller="productController">
     <label for="" ng-if="successMessage" class="alert alert-success" style="width: 80%;
     position: fixed;
     top: 65px;">{{successMessage}}</label>
@@ -46,8 +46,8 @@
                     <div class="adding-section">
                         <input type="text" class="form-control" placeholder="Name of Product" ng-model="product.name"><br>
                         <div class="form-group">
-                            <label for="location name">Select Type</label>
-                            <select name="" id="" class="form-control" ng-model="location.category">
+
+                            <select name="" id="" class="form-control" ng-model="product.category">
                                                 <option>--Select Type--</option>
                                                 <option value="alcohol">Alcohol</option>
                                                 <option value="special_pakage">Special package</option>
@@ -58,51 +58,35 @@
                         <div class="modal-body">
                             <div class="adding-section">
                                 <input type="text" class="form-control" placeholder="Name of Product" ng-model="product.name"><br>
-                                <div class="form-group">
-                                    <label for="location name">Select Type</label>
-                                    <select name="" id="" class="form-control" ng-model="location.category">
-                                                        <option>--Select Type--</option>
-                                                        <option value="alcohol">Alcohol</option>
-                                                        <option value="special_pakage">Special package</option>
-                                                        <option value="sitan">Sitan</option>
-                                                       
-                                                    </select>
-                                </div>
+
                                 <div class="col-sm-6 col-md-6 inner-form">
-                                    <label for="Property type">Images Of Property* [files must be 2 to 5.]</label><br>
-                                    <div width="20px"><input type="file" id="file-input" class=" form-control" name="images" file-model="files" multiple required></div>
-                                    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-                                    <br>
-
-                                </div>
-                                <div id="preview"></div>
+                                    <label for="Property type">Images Of Product* [files must be 2 to 5.]</label><br>
+                                    <input type="file" id="file-input" class=" form-control" name="images" file-model="files" multiple required></div>
+                                <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
                                 <br>
-                                <input type="number" class="form-control" placeholder="Quantity" ng-model="product.contact"><br>
-                                <input type="number" class="form-control" placeholder="Price" ng-model="product.price"><br>
-                                <textarea name="" id="" class="form-control" rows="10" placeholder="Description of product..." ng-model="product.description"></textarea>
-                                <!-- <div class="col-sm-12 col-md-12 news-content"> -->
 
-                                <label for="">{{message}}</label>
                             </div>
+                            <div id="preview"></div>
+                            <br>
+                            <input type="number" class="form-control" placeholder="Quantity" ng-model="product.contact"><br>
+                            <input type="number" class="form-control" placeholder="Price" ng-model="product.price"><br>
+                            <textarea name="" id="" class="form-control" rows="10" placeholder="Description of product..." ng-model="product.description"></textarea>
+                            <!-- <div class="col-sm-12 col-md-12 news-content"> -->
+
+                            <label for="">{{message}}</label>
                         </div>
-                        <input type="number" class="form-control" placeholder="Quantity" ng-model="product.contact"><br>
-                        <input type="number" class="form-control" placeholder="Price" ng-model="product.price"><br>
-                        <textarea name="" id="" class="form-control" rows="10" placeholder="Description of product..." ng-model="product.description"></textarea>
-                        <!-- <div class="col-sm-12 col-md-12 news-content"> -->
-
-                        <label for="">{{message}}</label>
                     </div>
-                </div>
-                <!-- </div> -->
 
-                <!-- Modal footer -->
-                <div class="modal-footer">
-                    <label for="" ng-if="success">{{success}}</label>
-                    <button class="btn btn-outline-success" ng-click="saveHotel(product ,'product')" data-dismiss="modal">Save Product</button>
-                    <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>{{dat._id}}
+
+
+                    <!-- </div> -->
+
+                    <!-- Modal footer -->
+                    <div class="modal-footer">
+                        <label for="" ng-if="success">{{success}}</label>
+                        <button class="btn btn-outline-success" ng-click="saveProduct(product ,'product')" data-dismiss="modal">Save Product</button>
+                        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>{{dat._id}}
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-</div>
-</div>

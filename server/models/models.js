@@ -1,6 +1,6 @@
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
-mongoose.connect('mongodb://localhost:27017/HimalayanOdysseys').then(function(err) {
+mongoose.connect('mongodb://localhost:27017/DrinkNepal').then(function(err) {
     console.log('Drink Nepal Mongodb Connect..Successfully.');
 });
 //models for super admin login
