@@ -1,0 +1,12 @@
+<div class="col-sm-12 col-md-12 user-settings" ng-controller="userSetting">
+    <!-- backend user -->
+    <h1>User setting</h1>
+    <a>Change Password</a>
+    <a>Other setting</a>
+    <div class="col-sm-12 col-md-12 change-password">
+        <input type="password" placeholder="Enter your old password" ng-model="user.oldpass"><br>
+        <input type="password" placeholder="Enter new password" ng-model="user.newpass"><br>
+        <button class="btn btn-default btn-sm" ng-click="changePass()">Save Changes</button><br>
+        <label for="">{{message}}</label>
+    </div>
+</div>

@@ -1,0 +1,304 @@
+<% include templates/navbar.html%>
+
+    <!-- front end home page dynamic -->
+    <div class="col-md-12" style="padding: 0px;">
+        <div id="myCarousel" class="carousel slide" data-ride="carousel">
+            <!-- Indicators -->
+            <ol class="carousel-indicators">
+                <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+                <li data-target="#myCarousel" data-slide-to="1"></li>
+                <li data-target="#myCarousel" data-slide-to="2"></li>
+            </ol>
+            <!-- Wrapper for slides -->
+            <div class="carousel-inner">
+                <div class="item active">
+                    <img src="./images/1.jpg" alt="Los Angeles">
+                </div>
+
+                <div class="item">
+                    <img src="./images/2.jpg" alt="Chicago">
+                </div>
+
+                <div class="item">
+                    <img src="./images/3.jpg" alt="New York">
+                </div>
+            </div>
+
+            <!-- Left and right controls -->
+            <!-- <a class="left carousel-control" href="#myCarousel" data-slide="prev">
+            <span class="glyphicon glyphicon-chevron-left"></span>
+            <span class="sr-only">Previous</span>
+          </a>
+          <a class="right carousel-control" href="#myCarousel" data-slide="next">
+            <span class="glyphicon glyphicon-chevron-right"></span>
+            <span class="sr-only">Next</span>
+          </a> -->
+        </div>
+    </div>
+
+
+
+    <div class="bgimg-1 w3-display-container " id="home">
+        <div class="w3-display-middle" style="white-space:nowrap;">
+            <span class="w3-center w3-padding-large w3-xlarge w3-wide w3-animate-opacity">NEPAL <span class="w3-hide-small"></span></span>
+            <br>
+            <span class=" w3-padding-large  w3-xlarge w3-wide w3-animate-opacity">Once is not Enough <span class="w3-hide-small"></span></span>
+            <br>
+
+            <button class="w3-center w3-black w3-padding-large  w3-xlarge w3-wide w3-btn w3-round-large" data-toggle="collapse" data-target="#citys">CITYS <span class="w3-hide-small"></span></button>
+        </div>
+    </div>
+
+    <!-- Container (About Section) -->
+
+
+    </div>
+    <div id="citys" class="container" style="margin-top:1%" ng-controller="cityController">
+        <div id="myCarousel2" class="carousel slide" data-ride="carousel" style=" margin-top: 26%;">
+            <!-- Indicators -->
+            <!-- Wrapper for slides -->
+            <div class="carousel-inner">
+                <div class="item active">
+                    <div class="col-md-2 inner-activity-item" ng-repeat="city in cities">
+                        <img src="{{city.file_url}}" alt="" width="100%" height="150px !important">
+                        <h4 class="text-center">{{city.location_id.tourism_area}}</h4>
+                    </div>
+                </div>
+
+                <div class="item">
+                    <div class="col-md-2 inner-activity-item" ng-repeat="city in cities">
+                        <img src="{{city.file_url}}" alt="" width="100%" height="150px !important">
+                        <h4 class="text-center">{{city.location_id.tourism_area}}</h4>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-12" id="about" ng-app="" style="    background: #0b0e35;
+    width: 100%;
+    color: white;
+    margin-top: 5%;">
+        <div class="col-md-8 col-md-offset-2">
+            <h3 class="w3-center">ABOUT NEPAL </h3>
+            <p class="w3-center"><em>Nepal tag line</em></p>
+            <p>A trekkers' paradise, Nepal combines Himalayan views, golden temples, charming hill villages and jungle wildlife watching to offer one of the world's great travel destinations.
+                <span id="dots1">...</span>
+                <span id="more2">
+      Mountain Highs
+  The Nepal Himalaya is the ultimate goal for mountain lovers. Some of the Himalaya’s most iconic and accessible hiking is on offer here, with rugged trails to Everest, the Annapurnas and beyond. Nowhere else can you trek for days in incredible mountain scenery, secure in the knowledge that a hot meal, cosy lodge and warm slice of apple pie await you at the end of the day.Then there's the adrenaline kick of rafting a roaring Nepali river or bungee jumping into a yawning Himalayan gorge. Canyoning, climbing, kayaking, paragliding and mountain biking all offer a rush against the backdrop of some of the world’s most dramatic landscapes.
+  
+  Medieval Cities & Sacred Sites
+  Other travellers prefer to see Nepal at a more refined pace, admiring the peaks over a sunset gin and tonic from a Himalayan viewpoint, strolling through the medieval city squares of Kathmandu, Patan and Bhaktapur, and joining Tibetan Buddhist pilgrims on a spiritual stroll around centuries-old stupas and monasteries. Even after the 2015 earthquake, Nepal remains the cultural powerhouse of the Himalaya; the Kathmandu Valley in particular offers an unrivalled collection of world-class palaces, hidden backstreet shrines and sublime temple art. Nepal is also a great place to learn about everything from Tibetan Buddhism to how to make the best momos (dumplings).
+  
+  Travel Nirvana
+  There are few countries in the world that are as well 
+  set up for independent travel as Nepal. Wandering the trekking shops, bakeries and pizzerias of Thamel and Pokhara, it’s easy to feel that you have somehow landed in a kind of backpacker Disneyland. Out in the countryside lies a quite different Nepal, where traditional mountain life continues at a slower pace, and a million potential adventures glimmer on the mountain horizons. The biggest problem you might face in Nepal is just how to fit everything in, which is one reason why many people return here over and over again.
+  
+  Jungle Adventures
+  South of Nepal's mountains lies something completely different: a chain of wild and woolly national parks, where nature buffs scan the subtropical treetops for exotic bird species and comb the jungles for rhinos, tigers and crocodiles. Choose from a luxury safari lodge in central Chitwan or go exploring on a wilder trip to remote Bardia or Koshi Tappu, stopping en route to visit the birthplace of Buddha on the steamy plains near Lumbini. Whether you cross the country by mountain bike, motorbike, raft or tourist bus, Nepal offers an astonishingly diverse array of attractions and landscapes.
+    
+  </span>
+            </p>
+        </div>
+        <div class="w3-row-padding w3-center w3-section">
+
+            <button class="w3-button w3-padding-large w3-light-grey" style="margin-top:64px" id="myBtn">READ MORE</button>
+            <br><br>
+        </div>
+    </div>
+
+
+    <!-- Second Parallax Image with Portfolio Text -->
+
+    <div ng-controller="cityController" class="container" id="tophotel" style="background: white;    padding:  40px 40px 20px 77px ;">
+        <h3 class="w3-center">Top Hotels in Nepal</h3>
+        <p class="w3-center"><em>Here are the list of top hotels of Nepal<br></em></p><br>
+        <!-- Responsive Grid. Four columns on tablets, laptops and desktops. Will stack on mobile devices/small screens (100% width) -->
+        <div id="myCarousel3" class="carousel slide" data-ride="carousel">
+            <!-- Indicators -->
+            <!-- Wrapper for slides -->
+            <div class="carousel-inner">
+                <div class="item active">
+                    <div class="col-md-3 inner-activity-item" ng-if="hotels[0].hotel_images[0]">
+                        <img src="/hotels/{{hotels[0].hotel_images[0]}}" alt="" width="100%" height="320px !important">
+                        <h4 class="text-center">{{hotels[0].hotel_name}}</h4>
+                        <a class="" href="/hotel/{{hotels[0]._id}}">
+                            <p class="text-center btn btn-info" style="text-align: center"> See details</p>
+                        </a>
+                    </div>
+                    <div class="col-md-3 inner-activity-item" ng-if="hotels[1].hotel_images[0]">
+                        <img src="/hotels/{{hotels[1].hotel_images[0]}}" alt="" width="100%" height="320px !important">
+                        <h4 class="text-center">{{hotels[1].hotel_name}}</h4>
+                        <a class="" href="/hotel/{{hotels[1]._id}}">
+                            <p class="text-center btn btn-info" style="text-align: center"> See details</p>
+                        </a>
+                    </div>
+                    <div class="col-md-3 inner-activity-item" ng-if="hotels[2].hotel_images[0]">
+                        <img src="/hotels/{{hotels[2].hotel_images[0]}}" alt="" width="100%" height="320px !important">
+                        <h4 class="text-center">{{hotels[2].hotel_name}}</h4>
+                        <a class="" href="/hotel/{{hotels[2]._id}}">
+                            <p class="text-center btn btn-info" style="text-align: center"> See details</p>
+                        </a>
+                    </div>
+                    <div class="col-md-3 inner-activity-item" ng-if="hotels[3].hotel_images[0]">
+                        <img src="/hotels/{{hotels[3].hotel_images[0]}}" alt="" width="100%" height="320px !important">
+                        <h4 class="text-center">{{hotels[3].hotel_name}}</h4>
+                        <a class="" href="/hotel/{{hotels[3]._id}}">
+                            <p class="text-center btn btn-info" style="text-align: center"> See details</p>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="item">
+                    <div class="col-md-3 inner-activity-item" ng-if="hotels[4].hotel_images[0]">
+                        <img src="/hotels/{{hotels[4].hotel_images[0]}}" alt="" width="100%" height="320px !important">
+                        <h4 class="text-center">{{hotels[4].hotel_name}}</h4>
+                        <a class="" href="/hotel/{{hotels[4]._id}}">
+                            <p class="text-center btn btn-info" style="text-align: center"> See details</p>
+                        </a>
+                    </div>
+                    <div class="col-md-3 inner-activity-item" ng-if="hotels[5].hotel_images[0]">
+                        <img src="/hotels/{{hotels[5].hotel_images[0]}}" alt="" width="100%" height="320px !important">
+                        <h4 class="text-center">{{hotels[5].hotel_name}}</h4>
+                        <a class="" href="/hotel/{{hotels[5]._id}}">
+                            <p class="text-center btn btn-info" style="text-align: center"> See details</p>
+                        </a>
+                    </div>
+                    <div class="col-md-3 inner-activity-item" ng-if="hotels[6].hotel_images[0]">
+                        <img src="/hotels/{{hotels[6].hotel_images[0]}}" alt="" width="100%" height="320px !important">
+                        <h4 class="text-center">{{hotels[6].hotel_name}}</h4>
+                        <a class="" href="/hotel/{{hotels[6]._id}}">
+                            <p class="text-center btn btn-info" style="text-align: center"> See details</p>
+                        </a>
+                    </div>
+                    <div class="col-md-3 inner-activity-item" ng-if="hotels[7].hotel_images[0]">
+                        <img src="/hotels/{{hotels[7].hotel_images[0]}}" alt="" width="100%" height="320px !important">
+                        <h4 class="text-center">{{hotels[7].hotel_name}}</h4>
+                        <a class="" href="/hotel/{{hotels[7]._id}}">
+                            <p class="text-center btn btn-info" style="text-align: center"> See details</p>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Left and right controls -->
+            <a class="left carousel-control" href="#myCarousel3" data-slide="prev">
+                <span class="glyphicon glyphicon-chevron-left"></span>
+                <span class="sr-only">Previous</span>
+            </a>
+            <a class="right carousel-control" href="#myCarousel3" data-slide="next">
+                <span class="glyphicon glyphicon-chevron-right"></span>
+                <span class="sr-only">Next</span>
+            </a>
+        </div>
+
+        <div class="w3-row-padding w3-center w3-section">
+            <!-- 
+            <button class="w3-button w3-padding-large w3-light-grey" style="margin-top:64px">LOAD MORE</button> -->
+        </div>
+    </div>
+    <!-- Container (Portfolio Section) -->
+    <div class="container" id="portfolio" ng-controller="cityController">
+        <h3 class="text-center" style="margin-top:19px;">Top EXPERIENCE in Nepal</h3>
+        <p class="w3-center"><em>These are some of the top Activity for Nepal<br></em></p><br>
+
+        <!-- Responsive Grid. Four columns on tablets, laptops and desktops. Will stack on mobile devices/small screens (100% width) -->
+        <div id="myCarousel1" class="carousel slide" data-ride="carousel">
+            <!-- Indicators -->
+            <!-- Wrapper for slides -->
+            <div class="carousel-inner">
+                <div class="item active">
+                    <div class="col-md-3 inner-activity-item" ng-if="activities[0].activity_images[0]">
+                        <img src="/activity/{{activities[0].activity_images[0]}}" alt="" width="100%" height="320px !important">
+                        <h4 class="text-center">{{activities[0].name}}</h4>
+                        <a class="" href="/activity/{{activities[0]._id}}">
+                            <p class="text-center btn btn-info" style="text-align: center"> See details</p>
+                        </a>
+                    </div>
+                    <div class="col-md-3 inner-activity-item" ng-if="activities[1].activity_images[0]">
+                        <img src="/activity/{{activities[1].activity_images[0]}}" alt="" width="100%" height="320px !important">
+                        <h4 class="text-center">{{activities[1].name}}</h4>
+                        <a class="" href="/activity/{{activities[1]._id}}">
+                            <p class="text-center btn btn-info" style="text-align: center"> See details</p>
+                        </a>
+                    </div>
+                    <div class="col-md-3 inner-activity-item" ng-if="activities[2].activity_images[0]">
+                        <img src="/activity/{{activities[2].activity_images[0]}}" alt="" width="100%" height="320px !important">
+                        <h4 class="text-center">{{activities[2].name}}</h4>
+                        <a class="" href="/activity/{{activities[2]._id}}">
+                            <p class="text-center btn btn-info" style="text-align: center"> See details</p>
+                        </a>
+                    </div>
+                    <div class="col-md-3 inner-activity-item" ng-if="activities[3].activity_images[0]">
+                        <img src="/activity/{{activities[3].activity_images[0]}}" alt="" width="100%" height="320px !important">
+                        <h4 class="text-center">{{activities[3].name}}</h4>
+                        <a class="" href="/activity/{{activities[3]._id}}">
+                            <p class="text-center btn btn-info" style="text-align: center"> See details</p>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="item">
+                    <div class="col-md-3 inner-activity-item" ng-if="activities[4].activity_images[0]">
+                        <img src="/activity/{{activities[4].activity_images[0]}}" alt="" width="100%" height="320px !important">
+                        <h4 class="text-center">{{activities[4].name}}</h4>
+                        <a class="" href="/activity/{{activities[4]._id}}">
+                            <p class="text-center btn btn-info" style="text-align: center"> See details</p>
+                        </a>
+                    </div>
+                    <div class="col-md-3 inner-activity-item" ng-if="activities[5].activity_images[0]">
+                        <img src="/activity/{{activities[5].activity_images[0]}}" alt="" width="100%" height="320px !important">
+                        <h4 class="text-center">{{activities[5].name}}</h4>
+                        <a class="" href="/activity/{{activities[5]._id}}">
+                            <p class="text-center btn btn-info" style="text-align: center"> See details</p>
+                        </a>
+                    </div>
+                    <div class="col-md-3 inner-activity-item" ng-if="activities[6].activity_images[0]">
+                        <img src="/activity/{{activities[6].activity_images[0]}}" alt="" width="100%" height="320px !important">
+                        <h4 class="text-center">{{activities[6].name}}</h4>
+                        <a class="" href="/activity/{{activities[6]._id}}">
+                            <p class="text-center btn btn-info" style="text-align: center"> See details</p>
+                        </a>
+                    </div>
+                    <div class="col-md-3 inner-activity-item" ng-if="activities[7].activity_images[0]">
+                        <img src="/activity/{{activities[7].activity_images[0]}}" alt="" width="100%" height="320px !important">
+                        <h4 class="text-center">{{activities[7].name}}</h4>
+                        <a class="" href="/activity/{{activities[7]._id}}">
+                            <p class="text-center btn btn-info" style="text-align: center"> See details</p>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Left and right controls -->
+            <a class="left carousel-control" href="#myCarousel1" data-slide="prev">
+                <span class="glyphicon glyphicon-chevron-left"></span>
+                <span class="sr-only">Previous</span>
+            </a>
+            <a class="right carousel-control" href="#myCarousel1" data-slide="next">
+                <span class="glyphicon glyphicon-chevron-right"></span>
+                <span class="sr-only">Next</span>
+            </a>
+        </div>
+
+        <div class="w3-row-padding w3-center w3-section">
+            <!-- 
+            <button class="w3-button w3-padding-large w3-light-grey" style="margin-top:64px">LOAD MORE</button> -->
+        </div>
+    </div>
+
+    <!-- Modal for full size images on click-->
+    <div id="modal01" class="w3-modal w3-black" onclick="this.style.display='none'">
+        <span class="w3-button w3-large w3-black w3-display-topright" title="Close Modal Image"><i class="fa fa-remove"></i></span>
+        <div class="w3-modal-content w3-animate-zoom w3-center w3-transparent w3-padding-64">
+            <img id="img01" class="w3-image">
+            <p id="caption" class="w3-opacity w3-large"></p>
+        </div>
+    </div>
+
+    <div class="clear-fix"></div>
+
+
+
+    <!-- Footer -->
+    <% include templates/footer.html%>

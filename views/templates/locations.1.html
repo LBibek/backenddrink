@@ -1,0 +1,438 @@
+<style>
+    #location {
+        border-right: 3px solid #ff7513;
+    }
+</style>
+<div class="row locations" ng-controller="locationController">
+    <!-- saving location and getting location -->
+    <div class="modal" id="addMap" ng-controller="locationController">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <!-- Modal Header -->
+                <div class="modal-header">
+                    <h4 class="modal-title">Pick location to update map</h4>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+                <!-- Modal body -->
+                <div class="modal-body">
+                    <div>
+                        <div class="col-sm-12 col-md-12 news-content">
+                            <div class="col-sm-12 col-md-12" style="padding: 0px 2px 1px 2px;">
+                                <div id='map' style='width: 100%; height: 300px;'></div><br>
+                                <div style="width:50%;">
+                                    <label for="">Longitude
+                                        <pre id='lng'></pre></label>
+                                    <label for="">Latitude
+                                        <pre id='lat'></pre></label><br>
+                                </div>
+                                <div style="width: 40%;float: right;margin-top: -75px;">
+                                    <label for="">Saved Lng
+                                        <pre>{{weather.latitude}}</pre></label>
+                                    <label>Saved Lat
+                                        <pre>{{weather.longitude}}</pre></label><br>
+                                </div>
+                                <label for="">{{message}}</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Modal footer -->
+                <div class="modal-footer">
+                    <button class="btn btn-outline-success" ng-click="saveMap()">Save latLng</button>
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <!-- //end -->
+    <!-- saving guiders and getting guiders -->
+    <div class="modal" id="addGuide" ng-controller="locationController">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <!-- Modal Header -->
+                <div class="modal-header">
+                    <h4 class="modal-title">Liscenced Guiders</h4>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+                <!-- Modal body -->
+                <div class="modal-body">
+
+                </div>
+                <!-- Modal footer -->
+                <div class="modal-footer">
+                    <label for="" ng-if="success">{{success}}</label>
+                    <button class="btn btn-outline-success" ng-click="saveGuider()">Save Guider</button>
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- //end -->
+    <!-- saving images  -->
+    <div class="modal" id="addImage" ng-controller="locationController">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <!-- Modal Header -->
+                <div class="modal-header">
+                    <h4 class="modal-title">Add Images</h4>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+                <!-- Modal body -->
+                <div class="modal-body">
+                    <div class="images-display">
+                        <img ng-repeat="data in left" ng-if="data.file_type=='image'" src="{{data.file_url}}" alt=""
+                            width="100px;" height="100px;">
+                    </div>
+                    <textarea name="" id="" cols="" rows="5" placeholder="Description of image.." class="form-control"
+                        ng-model="left.description"></textarea>
+                    <input type="file" id="file">
+                </div>
+                <!-- Modal footer -->
+                <div class="modal-footer">
+                    <label for="" ng-if="success">{{success}}</label>
+                    <button class="btn btn-outline-success" ng-click="saveImage('image')">Save Image</button>
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <!-- //end -->
+
+    <!-- saving videos  -->
+    <div class="modal" id="addVideo" ng-controller="locationController">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <!-- Modal Header -->
+                <div class="modal-header">
+                    <h4 class="modal-title">Add Videos</h4>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+                <!-- Modal body -->
+                <div class="modal-body">
+                    <div class="images-display">
+                        <img ng-repeat="data in left" ng-if="data.file_type=='image'" src="{{data.file_url}}" alt=""
+                            width="100px;" height="100px;">
+                    </div>
+                    <textarea name="" id="" cols="" rows="5" placeholder="Description of video.." class="form-control"
+                        ng-model="left.description"></textarea>
+                    <input type="file" id="file">
+                </div>
+                <!-- Modal footer -->
+                <div class="modal-footer">
+                    <label for="" ng-if="success">{{success}}</label>
+                    <button class="btn btn-outline-success" ng-click="saveImage('video')">Save Video</button>
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- //end -->
+    <!-- saving videos  -->
+    <div class="modal" id="addHotel" ng-controller="locationController">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <!-- Modal Header -->
+                <div class="modal-header">
+                    <h4 class="modal-title">Add Hotel</h4>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+                <!-- Modal body -->
+                <div class="modal-body">
+                    <!-- <div class="images-display" ng-if="hotels[0]">
+                        <label for="">Name: <strong>{{hotels[0].hotel_name}}</strong></label>
+                        <label for="">Address: <strong>{{hotels[0].exact_address}}</strong></label>
+                        <label for="">Contact: <strong>{{hotels[0].contact}}</strong></label>
+                        <label for="">Contact: <strong>{{hotels[0].contact}}</strong></label>
+                        <label for="">Website: <strong><a href="{{hotels[0].website}}">{{hotels[0].website}}</a></strong></label>
+                        <label for="">Website: <strong><a href="{{hotels[0].website}}"></a> {{hotels[0].website}}</strong></label>
+                        <img src="{{hotels[0].image_url}}" alt="" width="100px;" height="100px;">
+                        <p>{{hotels[0].description}}</p>
+                    </div> -->
+                    <div class="adding-section">
+                        <input type="text" class="form-control" placeholder="Name of Hotel" ng-model="hotels.hotel_name"><br>
+                        <input type="text" class="form-control" placeholder="Address of Hotel" ng-model="hotels.exact_address">
+                        <br>
+                        <input type="number" class="form-control" placeholder="Contact of hotel" ng-model="hotels.contact"><br>
+                        <input type="number" class="form-control" placeholder="Price" ng-model="hotels.price"><br>
+                        
+                        <!-- <input type="text" class="form-control" placeholder="Website of hotel" ng-model="hotels.website"><br> -->
+                        <div class="form-group">
+                            <label for="location name">Anemities</label> <br>
+                            <input type="checkbox" ng-model="hotel.sub.Resto">
+                            <label for="">In House Resto</label>
+                            <input type="checkbox" ng-model="hotel.sub.CCTV">
+                            <label for="">CCTV</label>
+                            <input type="checkbox" ng-model="hotel.sub.Kitchen">
+                            <label for="">Kitchen</label>
+                            <input type="checkbox" ng-model="hotel.sub.Bar">
+                            <label for="">Bar</label>
+                            <input type="checkbox" ng-model="hotel.sub.WiFi">
+                            <label for="">Free WiFi</label>
+                            <input type="checkbox" ng-model="hotel.sub.tub">
+                            <label for="">Bath tub</label>
+                            <input type="checkbox" ng-model="hotel.sub.Parking">
+                            <label for="">Parking</label>
+                            <input type="checkbox" ng-model="hotel.sub.AC">
+                            <label for="">AC</label>
+                            <input type="checkbox" ng-model="hotel.sub.Card">
+                            <label for="">Card Payment</label>
+                            <input type="checkbox" ng-model="hotel.sub.TV">
+                            <label for="">TV</label>
+                            <input type="checkbox" ng-model="hotel.sub.Heater">
+                            <label for="">Room Heater</label>
+                        </div>
+                        <input type="file" id="hotel"><br>
+                        <textarea name="" id="" class="form-control" rows="5" placeholder="Description of hotel..."
+                            ng-model="hotels.description"></textarea>
+                            <textarea name="" id="" class="form-control" rows="6" placeholder="Hotel Rules"
+                            ng-model="hotels.rules"></textarea>
+                            <!-- <div class="col-sm-12 col-md-12 news-content"> -->
+                                <!-- <h5> Pick Hotel location to update map</h5>
+                                <div class="col-sm-12 col-md-12" style="padding: 0px 20px 16px 19px;">
+                                    <div id='map' style='width: 100%; height: 300px;'></div><br>
+                                    <div style="width:50%;">
+                                        <label for="">Longitude
+                                            <pre id='lng'></pre></label>
+                                        <label for="">Latitude
+                                            <pre id='lat'></pre></label><br>
+                                    </div>
+                                    <div style="width: 40%;float: right;margin-top: -75px;">
+                                        <label for="">Saved Lng
+                                            <pre>{{weather.latitude}}</pre></label>
+                                        <label>Saved Lat
+                                            <pre>{{weather.longitude}}</pre></label><br>
+                                    </div>
+                                    <label for="">{{message}}</label>
+                                </div> -->
+                            </div>
+                    <!-- </div> -->
+                </div>
+                <!-- Modal footer -->
+                <div class="modal-footer">
+                    <label for="" ng-if="success">{{success}}</label>
+                    <button class="btn btn-outline-success" ng-click="saveHotel()">Save Hotel</button>
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- //end -->
+    <!-- saving videos  -->
+    <div class="modal" id="addFood" ng-controller="locationController">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <!-- Modal Header -->
+                <div class="modal-header">
+                    <h4 class="modal-title">Add Food</h4>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+                <!-- Modal body -->
+                <div class="modal-body">
+                    <div class="images-display" ng-if="foods" ng-repeat="dat in foods">
+                        <label for="">Food Name: <strong>{{dat.food_name}}</strong></label>
+                        <label for="">Occasion of: <strong>{{dat.occasion}}</strong></label>
+                        <img src="{{dat.image_url}}" alt="" width="100px;" height="100px;">
+                        <p>{{dat.description}}</p>
+                    </div>
+                    <div class="adding-section">
+                        <input type="text" class="form-control" placeholder="name of food" ng-model="food.food_name"><br>
+                        <input type="text" class="form-control" placeholder="occasion..." ng-model="food.occasion">
+                        <br>
+                        <input type="file" id="food"><br>
+                        <textarea class="form-control" rows="5" placeholder="description of food..." ng-model="food.description"></textarea>
+                    </div>
+                </div>
+                <!-- Modal footer -->
+                <div class="modal-footer">
+                    <label for="" ng-if="success">{{success}}</label>
+                    <button class="btn btn-outline-success" ng-click="saveFood()">Save Food</button>
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- //end -->
+    <div class="col-md-12 inner-location">
+        <div class="col-md-12 location-header">
+            <div class="row">
+                <div class="left-location-header col-md-10">
+                    <h2>Tourism area around ({{locationData.count}})</h2>
+                </div>
+                <div class="right-location-header col-md-2">
+                    <button class="btn btn-outline-primary" type="button" class="btn btn-primary" data-toggle="modal"
+                        data-target="#myModal">Add
+                        Tourism Area</button>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-12 location-display-main">
+            <!-- displaying location and other details -->
+            <!-- //error/success message -->
+            <div class="success-message" ng-if="successMessage">
+                <div class="alert alert-dark alert-dismissible fade show">
+                    <button type="button" class="close" data-dismiss="alert">&times;</button>
+                    <strong>{{successMessage}}!</strong>
+                </div>
+            </div>
+            <!-- //end of error message -->
+            <div class="location-display col-md-12" style="padding:0px;" ng-repeat="dat in locationData.data">
+                <div class="location-title row">
+                    <div class="col-md-10 location-title-left">
+                        <h2>{{dat.tourism_area}} <span class="badge badge-info">{{dat.category}}</span></h2>
+                    </div>
+                    <div class="col-md-2 location-title-right">
+                        <button class="btn btn-outline-secondary btn-sm">Edit</button>
+                        <button class="btn btn-danger btn-sm" data-toggle="modal" data-target="#deleteModal" ng-click="deleteLocation(dat._id)">Delete</button>
+                    </div>
+
+                    <!-- delete modal -->
+                    <div class="modal" id="deleteModal" ng-controller="locationController">
+                        <div class="modal-dialog" style="    margin-top: 15%;">
+                            <div class="modal-content">
+                                <!-- Modal Header -->
+                                <!-- Modal body -->
+                                <div class="modal-body">
+                                    <h5>Are you sure want to delete?</h5>
+                                </div>
+                                <!-- Modal footer -->
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-danger" data-dismiss="modal" ng-click="sure()">Yes</button>
+                                    <button type="button" class="btn btn-outline-default" data-dismiss="modal">Close</button>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                    <!-- end -->
+                </div>
+                <div class="col-md-12 location-description">
+                    <p>{{dat.location_description}}</p>
+                </div>
+                <div class="col-md-12 location-buttons">
+                    <a href="" data-toggle="modal" data-target="#addMap" ng-click="loadMap(dat._id)"><span class="fa fa-plus"></span>
+                        Map</a>
+                    <a href="" data-toggle="modal" data-target="#addGuide" ng-click="loadGuide(dat._id)"><span class="fa fa-plus"></span>
+                        Guiders
+                        <span class="badge badge-warning">4</span></a>
+                    <a href="" data-toggle="modal" data-target="#addImage" ng-click="loadImage(dat._id)"><span class="fa fa-plus"></span>
+                        Images <span class="badge badge-warning">3</span></a>
+                    <a href="" data-toggle="modal" data-target="#addVideo" ng-click="loadImage(dat._id)"><span class="fa fa-plus"></span>
+                        Videos <span class="badge badge-warning">3</span></a>
+                    <a href="" data-toggle="modal" data-target="#addHotel" ng-click="loadHotel(dat._id)"><span class="fa fa-plus"></span>
+                        Hotel
+                        <span class="badge badge-warning">3</span></a>
+                    <a href="" data-toggle="modal" data-target="#addFood" ng-click="loadFood(dat._id)"><span class="fa fa-plus"></span>
+                        Food <span class="badge badge-warning">3</span></a>
+                    <a href="" ng-click="load('festival', dat._id)"><span class="fa fa-plus"></span> Festivals <span
+                            class="badge badge-warning">3</span></a>
+                    <a href="" ng-click="load('season', dat._id)"><span class="fa fa-plus"></span> Season <span class="badge badge-warning">3</span></a>
+                    <a href="" ng-click="load('cast_and_culture', dat._id)"><span class="fa fa-plus"></span> Cast and
+                        culture <span class="badge badge-warning">3</span></a>
+                    <a href="" ng-click="load('dont_try', dat._id)"><span class="fa fa-plus"></span> Don't try <span
+                            class="badge badge-warning">3</span></a>
+                </div>
+            </div>
+            <!-- end -->
+        </div>
+    </div>
+    <!-- <h2 ng-if="success.message">{success.message}</h2> -->
+
+</div>
+<!-- adding items modal -->
+<!-- end of modal -->
+<!-- modal of adding location -->
+<!-- Button to Open the Modal -->
+<!-- The Modal -->
+<div class="modal" id="myModal" ng-controller="locationController">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <!-- Modal Header -->
+            <div class="modal-header">
+                <h4 class="modal-title">Add tourism area</h4>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+
+            <!-- Modal body -->
+            <div class="modal-body">
+                <div class="form-group">
+                    <label for="location name">Name the district</label>
+                    <input type="text" placeholder="name of district..." class="form-control" ng-model="location.district">
+                </div>
+                <div class="form-group">
+                    <label for="location name">Select Category</label>
+                    <select name="" id="" class="form-control" ng-model="location.category">
+                        <option>--Select Category--</option>
+                        <option value="adventure">Adventure</option>
+                        <option value="historical">Historical</option>
+                        <option value="spritual">Spritual</option>
+                        <option value="nature">Nature</option>
+                        <option value="live-like-local">Live like local</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="location name">Name of location</label>
+                    <input type="text" placeholder="name of the area..." class="form-control" ng-model="location.tourism_area">
+                </div>
+                <div class="form-group">
+                    <label for="location name">Check Adventure Category</label> <br>
+                    <input type="checkbox" ng-model="location.sub.trecking">
+                    <label for="">Trecking</label>
+                    <input type="checkbox" ng-model="location.sub.hiking">
+                    <label for="">Hiking</label>
+                    <input type="checkbox" ng-model="location.sub.rafting">
+                    <label for="">Rafting</label>
+                    <input type="checkbox" ng-model="location.sub.bunjee_jumping">
+                    <label for="">Bungee Jumping</label>
+                    <input type="checkbox" ng-model="location.sub.paragliding">
+                    <label for="">Paragliding</label>
+                    <input type="checkbox" ng-model="location.sub.canoing">
+                    <label for="">Canoing</label>
+                </div>
+                <div class="form-group">
+                    <label for="location name">Check Historical Category</label><br>
+                    <input type="checkbox" ng-model="location.sub.museum">
+                    <label for="">Meseum</label>
+                    <input type="checkbox" ng-model="location.sub.temples">
+                    <label for="">Temples</label>
+                    <input type="checkbox" ng-model="location.sub.jattras">
+                    <label for="">Jattras</label>
+                </div>
+                <div class="form-group">
+                    <label for="location name">Check Spritual Category</label><br>
+                    <input type="checkbox" ng-model="location.sub.mediation_center">
+                    <label for="">Meditation Center</label>
+                    <input type="checkbox" ng-model="location.sub.monastry">
+                    <label for="">Monastry</label>
+                </div>
+                <div class="form-group">
+                    <label for="location name">Check Nature Category</label><br>
+                    <input type="checkbox" ng-model="location.sub.lakes">
+                    <label for="">Lakes</label>
+                    <input type="checkbox" ng-model="location.sub.river">
+                    <label for="">River</label>
+                    <input type="checkbox" ng-model="location.sub.waterfall">
+                    <label for="">Waterfall</label>
+                    <input type="checkbox" ng-model="location.sub.pond">
+                    <label for="">Pond</label>
+                    <input type="checkbox" ng-model="location.sub.sunrise_sunset">
+                    <label for="">Sunrise/Sunset</label>
+                </div>
+                <div class="form-group">
+                    <label for="location name">Intro of location</label>
+                    <textarea name="" id="" rows="4" placeholder="Intro of area" class="form-control" ng-model="location.area_description"></textarea>
+                </div>
+            </div>
+
+            <!-- Modal footer -->
+            <div class="modal-footer">
+                <button type="button" class="btn btn-outline-success" data-dismiss="modal" ng-click="addLocation()">Add</button>
+                <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+            </div>
+
+        </div>
+    </div>
+</div>
+<!-- end of modal -->

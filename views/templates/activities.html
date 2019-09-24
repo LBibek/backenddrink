@@ -1,0 +1,95 @@
+<h1>Activities</h1>
+<!-- backend activity -->
+<button class="btn btn-info btn-md" href="" data-toggle="modal" data-target="#addActivity"><span class="fa fa-plus"></span>
+   Add Activities
+ </button>
+
+<div ng-controller="hotelController">
+    <label for="" ng-if="successMessage" class="alert alert-success" style="width: 80%;
+    position: fixed;
+    top: 65px;">{{successMessage}}</label>
+    <h2>All Activities <span class="" style="float: right">{{activityData.length}}</span></h2>
+    <div class="col-md-12 all-activity">
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>Activity Name</th>
+                    <th>Price</th>
+                    <th>Address</th>
+                    <th>Booking Status</th>
+                    <th>Contact</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="dat in activityData">
+                    <td>{{dat.name}}</td>
+                    <td>{{dat.price}}</td>
+                    <td>{{dat.exact_address}}</td>
+                    <td>{{dat.bookingStatus}}</td>
+                    <td>{{dat.contact}}</td>
+                    <td><button class="fa fa-trash btn btn-danger" ng-click="removeActivity(dat._id)"></button>
+                        <button class="fa fa-pencil btn btn-info"></button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="modal" id="addActivity">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <!-- Modal Header -->
+                <div class="modal-header">
+                    <h4 class="modal-title">Add Activities</h4>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+                <!-- Modal body -->
+                <div class="modal-body">
+                    <div class="adding-section">
+                        <input type="text" class="form-control" placeholder="Name of Activity" ng-model="activity.name"><br>
+                        <input type="text" class="form-control" placeholder="Address of Activity" ng-model="activity.exact_address">
+                        <br>
+                        <div ng-controller="locationController">
+                            <select name="" class="form-control" id="" ng-model="activity.location">
+                                <option value="">--select location--</option>
+                                    <option value="{{location._id}}"  ng-repeat="location in locationData">{{location.tourism_area}}</option>
+                                </select>
+                        </div>
+                        <br>
+
+                        <input type="number" class="form-control" placeholder="Contact of Activity" ng-model="activity.contact"><br>
+                        <input type="number" class="form-control" placeholder="Price for Activity" ng-model="activity.price"><br>
+                        <input type="number" class="form-control" placeholder="Duration for Activity" ng-model="activity.duration"><br>
+
+                        <input type="file" id="file-input" placeholder="Street Name" class=" form-control" name="images" file-model="activityFiles" multiple required>
+                        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+                        <div id="preview"></div>
+                        <textarea name="" id="" class="form-control" rows="10" placeholder="Description of Activity..." ng-model="activity.description"></textarea>
+                        <textarea name="" id="" class="form-control" rows="6" placeholder="Whats included" ng-model="activity.included"></textarea>
+                        <textarea name="" id="" class="form-control" rows="6" placeholder="Whats not included" ng-model="activity.notincluded"></textarea>
+                        <textarea name="" id="" class="form-control" rows="6" placeholder="Highlights" ng-model="activity.highlights"></textarea>
+                        <!-- <div class="col-sm-12 col-md-12 news-content"> -->
+                        <h5> Pick Activity location to update map</h5>
+                        <div class="col-sm-12 col-md-12" style="padding: 0px 20px 16px 19px;">
+                            <div id='hotelmap' style='width: 100%; height: 300px;'></div><br>
+                            <div style="width:50%;">
+                                <label for="">Longitude {{lat}}{{lng}}
+                                        <pre id='lng'></pre></label>
+                                <label for="">Latitude
+                                        <pre id='lat'></pre></label><br>
+                            </div>
+                            <label for="">{{message}}</label>
+                        </div>
+                    </div>
+                    <!-- </div> -->
+                </div>
+                <!-- Modal footer -->
+                <div class="modal-footer">
+                    <label for="" ng-if="success">{{success}}</label>
+                    <button class="btn btn-outline-success" ng-click="saveHotel(activity ,'activity',lat, lng)" data-dismiss="modal">Save Activity</button>
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>{{dat._id}}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

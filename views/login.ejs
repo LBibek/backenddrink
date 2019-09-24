@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="sinageApp">
+<!-- bacckend -->
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
+    <link rel="manifest" href="/images/site.webmanifest">
+    <link rel="mask-icon" href="/images/safari-pinned-tab.svg" color="#5bbad5">
+    <meta name="msapplication-TileColor" content="#da532c">
+    <meta name="theme-color" content="#ffffff">
+    <title>Himalayan Odysseys </title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="/css/login.min.css">
+</head>
+
+<body ng-controller="loginController">
+    <div class="container">
+        <div class="form-wrapper">
+            <div class="img">
+                <img src="/images/logo.png" alt="logo">
+            </div>
+            <!-- <h3 class="credentials">Please Fill Your Login details</h3> -->
+            <form class="form-horizantal" id="formlogin">
+                <div class="form-group">
+                    <!-- <label for="username" class="form-label">Usename</label> -->
+                    <input type="text" name="username" id="username" class="form-control" placeholder="Enter username" ng-model="login.username">
+                </div>
+                <div class="form-group">
+                    <!-- <label for="password" class="form-label">Password</label> -->
+                    <input type="password" name="password" id="password" class="form-control" placeholder="Enter Password" ng-model="login.password">
+                </div>
+                <div class="form-group">
+                    <button type="submit" class="btn btn-danger" id="loginbtn" ng-click="Login()">Login</button>
+                </div>
+                <p ng-if="resp" style="text-align:center; color:red;">{{resp}}</p>
+                <div class="form-group forget">
+                    <a href="#forgetpass" class="forgetpass" data-toggle="modal">Forget Password ?</a>
+                </div>
+            </form>
+        </div>
+
+    </div>
+
+
+    <div class="modal fade" id="forgetpass" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Reset Password</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form action="" id="forgetpassform" class="form-horizantal w-75 mx-auto" method="post" enctype="multipart/form-data">
+
+
+                        <div class="form-group">
+                            <div>
+                                <label for="" class="col-form-label">Name of. Users</label>
+                                <input type="text" name="phoneno" class="form-control" placeholder="Name of User....">
+
+
+                            </div>
+                            <div>
+                                <label for="" class="col-form-label">Email</label>
+                                <input type="email" name="email" class="form-control" placeholder="Enter Email here....">
+
+
+                            </div>
+                        </div>
+
+                        <div class="form-group  mt-2 ">
+                            <button type="submit" class="btn btn-primary w-50 mx-auto">Reset</button>
+                        </div>
+                    </form>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+
+
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+    <!-- jQuery library -->
+    <script src="http://malsup.github.io/jquery.cycle.all.js"></script>
+    <script src="./js/angularController.js"></script>
+    <script src="./js/xml2json.js"></script>
+    <script src="/js/popper.min.js"></script>
+</body>
+
+</html>

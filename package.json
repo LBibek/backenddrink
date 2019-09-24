@@ -1,0 +1,24 @@
+{
+    "name": "himalayan-odysseys",
+    "version": "1.0.0",
+    "description": "",
+    "main": "index.js",
+    "directories": {
+        "test": "tests"
+    },
+    "dependencies": {
+        "body-parser": "^1.18.3",
+        "ejs": "^2.6.1",
+        "express": "^4.16.3",
+        "express-session": "^1.15.6",
+        "jest": "^24.8.0",
+        "mongoose": "^5.6.3",
+        "multer": "^1.3.0"
+    },
+    "devDependencies": {},
+    "scripts": {
+        "test": "jest"
+    },
+    "author": "",
+    "license": "ISC"
+}

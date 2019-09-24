@@ -1,0 +1,108 @@
+<h1>Product</h1>
+<!-- backend activity -->
+<button class="btn btn-info btn-md" href="" data-toggle="modal" data-target="#addProduct"><span class="fa fa-plus"></span>
+   Add Product
+ </button>
+
+<div ng-controller="hotelController">
+    <label for="" ng-if="successMessage" class="alert alert-success" style="width: 80%;
+    position: fixed;
+    top: 65px;">{{successMessage}}</label>
+    <h2>All Procuct <span class="" style="float: right">{{productData.length}}</span></h2>
+    <div class="col-md-12 all-product">
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>Product Name</th>
+                    <th>Price</th>
+                    <th>Quantity</th>
+                    <th>Description</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="dat in productData">
+                    <td>{{dat.name}}</td>
+                    <td>{{dat.price}}</td>
+                    <td>{{dat.quantity}}</td>
+                    <td>{{dat.description}}</td>
+                    <td><button class="fa fa-trash btn btn-danger" ng-click="removeProduct(dat._id)"></button>
+                        <button class="fa fa-pencil btn btn-info"></button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="modal" id="addProduct">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <!-- Modal Header -->
+                <div class="modal-header">
+                    <h4 class="modal-title">Add Product</h4>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+                <!-- Modal body -->
+                <div class="modal-body">
+                    <div class="adding-section">
+                        <input type="text" class="form-control" placeholder="Name of Product" ng-model="product.name"><br>
+                        <div class="form-group">
+                            <label for="location name">Select Type</label>
+                            <select name="" id="" class="form-control" ng-model="location.category">
+                                                <option>--Select Type--</option>
+                                                <option value="alcohol">Alcohol</option>
+                                                <option value="special_pakage">Special package</option>
+                                                <option value="sitan">Sitan</option>
+                                               
+                                            </select>
+                        </div>
+                        <div class="modal-body">
+                            <div class="adding-section">
+                                <input type="text" class="form-control" placeholder="Name of Product" ng-model="product.name"><br>
+                                <div class="form-group">
+                                    <label for="location name">Select Type</label>
+                                    <select name="" id="" class="form-control" ng-model="location.category">
+                                                        <option>--Select Type--</option>
+                                                        <option value="alcohol">Alcohol</option>
+                                                        <option value="special_pakage">Special package</option>
+                                                        <option value="sitan">Sitan</option>
+                                                       
+                                                    </select>
+                                </div>
+                                <div class="col-sm-6 col-md-6 inner-form">
+                                    <label for="Property type">Images Of Property* [files must be 2 to 5.]</label><br>
+                                    <div width="20px"><input type="file" id="file-input" class=" form-control" name="images" file-model="files" multiple required></div>
+                                    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+                                    <br>
+
+                                </div>
+                                <div id="preview"></div>
+                                <br>
+                                <input type="number" class="form-control" placeholder="Quantity" ng-model="product.contact"><br>
+                                <input type="number" class="form-control" placeholder="Price" ng-model="product.price"><br>
+                                <textarea name="" id="" class="form-control" rows="10" placeholder="Description of product..." ng-model="product.description"></textarea>
+                                <!-- <div class="col-sm-12 col-md-12 news-content"> -->
+
+                                <label for="">{{message}}</label>
+                            </div>
+                        </div>
+                        <input type="number" class="form-control" placeholder="Quantity" ng-model="product.contact"><br>
+                        <input type="number" class="form-control" placeholder="Price" ng-model="product.price"><br>
+                        <textarea name="" id="" class="form-control" rows="10" placeholder="Description of product..." ng-model="product.description"></textarea>
+                        <!-- <div class="col-sm-12 col-md-12 news-content"> -->
+
+                        <label for="">{{message}}</label>
+                    </div>
+                </div>
+                <!-- </div> -->
+
+                <!-- Modal footer -->
+                <div class="modal-footer">
+                    <label for="" ng-if="success">{{success}}</label>
+                    <button class="btn btn-outline-success" ng-click="saveHotel(product ,'product')" data-dismiss="modal">Save Product</button>
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>{{dat._id}}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
